@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+{% load static %}
+
+{% block title %}Техностарт-Презентации для спикеров{% endblock %}
+
+{% block content %}
+
+    <div class="header-choice">
+        <h1>Список профессий:</h1>
+    </div>
+    <div class="choices-container">
+        <div class="pres-card">
+                {% for pres in presintations%}
+                    <div class="header-row">
+                        <h2>{{pres.title}}</h2>
+                        <a href="{% url 'download_presentation' pres.pk %}" >Скачать</a>
+                    </div>
+                {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

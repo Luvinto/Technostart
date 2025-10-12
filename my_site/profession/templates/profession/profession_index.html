@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Техностарт-Страница с профессиями{% endblock %}
+{% block content %}
+
+        <div class="header-choice">
+            <h1>Список профессий:</h1>
+        </div>
+        <div class="choices-container">
+            {% for profession in professions%}
+                <div class="card-container-eng">
+                    <div class="prof-card">
+                        <div class="content-wrapper">
+                            <h2 class="prof-title">{{profession.title}}</h2>
+                            <img class="prof-image" src="{{profession.img_static.url}}" alt="{{profession.title}}">
+                            <a href="{{ profession.get_absolute_url }}" class="prof-button">Изучить</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+{% endblock %}

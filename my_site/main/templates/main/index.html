@@ -1,0 +1,63 @@
+{%extends 'main/base.html' %}
+
+{% block title %}Техностарт - Главная страница{% endblock %}
+
+{% block content %}
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1 class="hero-title">Техностарт</h1>
+            <p class="hero-text">Открой для себя необъятный мир инженерных профессий!</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Наши преимущества</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">Интересные уроки</h3>
+                    <p class="feature-text">Имеется интересная теория и захватывающая практика</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Актуальная информация</h3>
+                    <p class="feature-text">Отслеживаем и добавляем перспективные инженерные специальности </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3 class="feature-title">Эксперты в помощь</h3>
+                    <p class="feature-text">Видео с экспертами каждой специальности</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="feature-title">База профессий</h3>
+                    <p class="feature-text">Подробная информация о всех специальностях</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Готовы к переменам?</h2>
+                <p class="cta-text">Если да, то нажмите кнопку ниже, пройдите регистрацию и выберите свою инженерную профессию мечты!</p>
+                <a href="{% url 'users:custom_login' %}" class="btn btn-secondary">Начать обучение прямо сейчас</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% load static %}
+<!-- templates/registration/login.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Подключите ваш CSS файл -->
+    <link rel="stylesheet" href="{% static 'users/css/users.css' %}">
+    <title>Техностарт-Вход</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Добавим обертку для центрирования и стилизации -->
+        <div class="form-wrapper">
+            <h2 class="form-title">Войти</h2>
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color: red;">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            <form method="post" class="registration-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <p>
+                        <label>Логин:</label>
+                        <input type="text" name="username" required>
+                    </p>
+                    <p>
+                        <label>Пароль:</label>
+                        <input type="password" name="password" required>
+                    </p>
+                </div>
+                <button type="submit" class="btn btn-primary">Войти</button>
+
+            </form>
+            <div class="form-footer">
+                <a href="{% url 'users:register' %}"><button type="button" class="btn btn-secondary">Зарегистрироваться</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

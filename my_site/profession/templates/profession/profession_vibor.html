@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Техностарт-Страница выбора{% endblock %}
+
+{% block content %}
+        <div class="header-choice">
+            <h1>Выберите вашу категорию</h1>
+        </div>
+        <div class="choices-container">
+            <!-- Первый выбор -->
+            <div class="choice-card" onclick="selectOption('student')">
+                <div class="choice-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h2 class="choice-title">Обучающийся</h2>
+                <p class="choice-description">
+                    Выберите этот путь, если вы учитесь в школе и хотите узнать больше про инженерные специальности.
+                </p>
+                <a href="{% url 'profession_index' %}" class="choice-button">Выбрать</a>
+            </div>
+
+            <div class="divider">или</div>
+
+            <!-- Второй выбор -->
+            <div class="choice-card" onclick="selectOption('graduate')">
+                <div class="choice-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h2 class="choice-title">Спикер</h2>
+                <p class="choice-description">
+                    Выберите этот путь, если вы работаете на предприятие и ведете детям профориентационные уроки в школе.
+                </p>
+                <a href="{% url 'presintations_list' %}" class="choice-button">Выбрать</a>
+            </div>
+        </div>
+
+{% endblock %}
+

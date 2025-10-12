@@ -1,0 +1,17 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Техностарт-{{post.title}}{% endblock %}
+
+{% block content %}
+
+    <div class="header-choice">
+        <h1>{{post.title}}</h1>
+    </div>
+    <div class="video-container">
+        <div class="video-wrapper">
+            <iframe src="{{post.url_content}}" style="border-radius: 20px;" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        </div>
+    </div>
+
+{% endblock %}

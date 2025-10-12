@@ -1,0 +1,40 @@
+<!-- accounts/templates/accounts/register.html -->
+{%load static%}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Техностарт-Регистрация</title>
+    <!-- Подключите ваш CSS файл -->
+    <link rel="stylesheet" href="{% static 'users/css/users.css' %}">
+</head>
+<body>
+    <!-- Обернем форму в контейнер -->
+    <div class="container">
+        <!-- Добавим обертку для центрирования и стилизации -->
+        <div class="form-wrapper">
+            <h2 class="form-title">Регистрация</h2>
+            <form method="post" class="registration-form">
+                {% csrf_token %}
+                <!-- Обернем каждое поле формы в div для лучшего контроля -->
+                {% for field in form %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="error-message">
+                                {% for error in field.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <!-- Заменим стандартную кнопку на ваш стиль btn -->
+                <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
