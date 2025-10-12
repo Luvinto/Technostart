@@ -6,3 +6,6 @@ def minus(a,b):
 
 def square(a,b):
     return a**b
+
+def ymnoj(a,b):
+    return a*b
