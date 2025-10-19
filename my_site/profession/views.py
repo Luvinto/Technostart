@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Profession,Presentations, Engineering_Processes
+from .models import Profession,Presentations, EngineeringProcessesAtaps, EngineeringProcessesTitle
 from django.http import HttpResponse, Http404
 from django.conf import settings
 import os
@@ -13,13 +13,18 @@ def vibor(req):
 
 @login_required
 def engineering_processes_index(req):
-    eng_proc=Engineering_Processes.objects.all()
-    return render(req, 'profession/engineering_processes_index.html', {'eng_proc':eng_proc} )
+    eng_ataps=EngineeringProcessesAtaps.objects.all()
+    eng_proc = EngineeringProcessesTitle.objects.all()
+    eng_proc_or_ataps= {
+        'eng_proc':eng_proc,
+        'eng_ataps':eng_ataps
+    }
+    return render(req, 'profession/engineering_processes_index.html', eng_proc_or_ataps)
 
 @login_required
 def engineering_processes(req, post_slug):
-    eng_proc=get_object_or_404(Engineering_Processes, slug=post_slug)
-    return render(req, 'profession/engineering_processes.html', {'eng_proc':eng_proc} )
+    eng_ataps=get_object_or_404(EngineeringProcessesAtaps, slug=post_slug)
+    return render(req, 'profession/engineering_processes.html', {'eng_ataps':eng_ataps} )
 
 @login_required
 def profession_index(req):

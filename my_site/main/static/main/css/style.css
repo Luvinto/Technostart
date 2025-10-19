@@ -709,6 +709,12 @@ body {
       width: 720px;
       height: 405px;
     }
+    .video-wrapper img {
+      position: relative;
+      width: 720px;
+      height: 405px;
+      border-radius: 20px;
+    }
     .video-wrapper iframe {
       position: absolute;
       top: 0;
@@ -777,10 +783,9 @@ body {
         /* Стили для маленьких карточек этапов */
         .stage-card {
             width: 220px; /* Фиксированная ширина */
-            min-height: 150px; /* Минимальная высота */
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))
-            border-radius: 15px;
-            padding: 20px;
+            height: 150px; /* Минимальная высота */
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+            padding: 10px 0 20px;
             display: flex;
             flex-direction: column;
             justify-content: space-between; /* Заголовок наверху, кнопка внизу */
@@ -802,6 +807,7 @@ body {
             font-size: 1.2rem;
             font-weight: bold;
             margin-bottom: 10px;
+            color: white;
         }
 
         .stage-info {
@@ -827,5 +833,26 @@ body {
         .stage-button:hover {
             background: #e67300; /* Темнее при наведении */
             transform: scale(1.05);
+        }
+        .stage-card-zero {
+            width: 220px; /* Фиксированная ширина */
+            height: 150px; /* Минимальная высота */
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+            padding: 10px 0 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Заголовок наверху, кнопка внизу */
+            align-items: center;
+            text-align: center;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            text-decoration: none; /* Убираем подчеркивание у ссылки */
+            color: inherit; /* Наследуем цвет текста */
+        }
+
+        .stage-card-zero:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
 

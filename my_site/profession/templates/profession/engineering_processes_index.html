@@ -6,19 +6,32 @@
     <div class="header-choice">
         <h1>Технологические процессы:</h1>
     </div>
+{% for eng_p in eng_proc %}
+<div class="choices-container">
     <div class="project-card">
-            <h2 class="project-header">Проект "Альфа"</h2>
+            <h2 class="project-header">{{eng_p.title}}</h2>
             <!-- Контейнер для карточек этапов -->
             <div class="stages-container">
-                {% for eng in eng_proc %}
+                {% for eng_a in eng_ataps %}
                     <!-- Карточка этапа -->
-                    <div class="stage-card"
-                        style="background-image: url('{{ eng.img.url }}');">
-                        <div class="stage-title">{{ eng.title_ataps }}</div>
-                        <!-- Описание или другая информация из модели eng -->
-                        <div class="stage-button">Изучить</div>
+                {% if eng_p.dp_index == eng_a.dp_index %}
+                    <div class="stage-card" style="
+                          width: 220px;           /* Установите желаемую ширину */
+                          height: 150px;          /* Установите желаемую высоту */
+                          background-image: url('{{ eng_a.img.url }}');
+                          background-size: contain;
+                          background-repeat: no-repeat;
+                          background-position: center center;
+                          border-radius: 20px;
+                          background-size: cover;
+                    ">
+                        <div class="stage-title">{{ eng_a.title_ataps }}</div>
+                        <a class="stage-button" href="{{ eng_a.get_absolute_url }}">Изучить</a>
                     </div>
+                {% endif %}
                 {% endfor %}
             </div>
     </div>
+</div>
+{% endfor %}
 {% endblock %}

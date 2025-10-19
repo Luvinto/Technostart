@@ -10,7 +10,11 @@
     </div>
     <div class="video-container">
         <div class="video-wrapper">
-            <iframe src="{{post.url_content}}" style="border-radius: 20px;" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+            {% if post.url_content is not NULL %}
+                <iframe src="{{post.url_content}}" style="border-radius: 20px;" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+            {% else %}
+                <img src="{% static 'profession/img/not_video.jpg'%}" alt="">
+            {% endif %}
         </div>
     </div>
 

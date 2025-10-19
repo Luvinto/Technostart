@@ -9,5 +9,4 @@ urlpatterns=[
     path('engineering_processes_index/', views.engineering_processes_index, name='engineering_processes_index'),
     path('post_professions/<slug:post_slug>', views.show_post, name='post_professions'),
     path('post_engineering/<slug:post_slug>', views.engineering_processes, name='post_engineering')
-
 ]
