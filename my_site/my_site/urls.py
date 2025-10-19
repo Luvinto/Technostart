@@ -25,7 +25,8 @@ urlpatterns = [
     path('secret-admin/', admin.site.urls),
     path('',include('main.urls')),
     path('profession/',include('profession.urls')),
-    path('users/', include('users.urls'))
+    path('users/', include('users.urls')),
+    path('prof_tests', include('prof_tests.urls'))
 ]
 
 if settings.DEBUG:
