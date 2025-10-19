@@ -12,12 +12,18 @@
 <!-- Header -->
     <header class="header">
         <div class="container header-container">
-            <img src="{% static 'main/jpg/logo.png' %}" alt="" class="logo-img">
-            <p class="logo-p">Техностарт</p>
+            <!-- Объединяем логотип и название в один блок -->
+            <div class="logo-wrapper">
+                <img src="{% static 'main/jpg/logo.png' %}" alt="Логотип Техностарт" class="logo-img">
+                <p class="logo-p">Техностарт</p>
+            </div>
+
+            <!-- Навигация -->
             <nav class="main-nav">
                 <ul class="nav-list">
-                    <li><a href="{% url 'home' %}"><i class="fa fa-home"> Главная</i></a></li>
-                    <li><a href="{% url 'about' %}"><i class="fa fa-user-circle"> О нас</i></a></li>
+                    <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> Главная</a></li>
+                    <li><a href="{% url 'prof_test' %}"><i class="fa fa-question-circle"></i> Профориентационное тестирование</a></li>
+                    <li><a href="{% url 'about' %}"><i class="fa fa-user-circle"></i> О нас</a></li>
                 </ul>
             </nav>
         </div>
@@ -41,6 +47,7 @@
                     <ul class="footer-links">
                         <li><a href="{% url 'home' %}"><i class="fa fa-home"> Главная</i></a></li>
                         <li><a href="{% url 'about' %}"><i class="fa fa-user-circle"> О нас</i></a></li>
+                        <li><a href="{% url 'prof_test' %}"><i class="fa fa-question-circle">Профориентационное тестирование</i></a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -48,7 +55,6 @@
                     <ul class="footer-anim">
                         <li><i class="fa fa-phone"> +7 XXX XXX XX XX</i></li>
                         <li><i class="fa fa-envelope"> bobr_true@mail.ru</i></li>
-
                     </ul>
                 </div>
             </div>

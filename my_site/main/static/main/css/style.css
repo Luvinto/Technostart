@@ -71,14 +71,22 @@ body {
 
 .header-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-between; /* Прижимает .logo-wrapper к левому краю, .main-nav к правому */
+    align-items: center; /* Выравнивание по вертикали */
     padding: 10px 0;
+    /* Убираем max-width и margin: 0 auto, если они были, чтобы использовать всю ширину .container */
+}
+
+/* Обёртка для логотипа и названия */
+.logo-wrapper {
+    display: flex;
+    align-items: center; /* Выравнивание по вертикали */
+    gap: 15px; /* Отступ между логотипом и названием */
+    padding: 0 0 0 15px;
 }
 
 .logo-img {
     height: 70px;
-    padding: 0 0 0 15px;
 }
 
 .logo-p {
@@ -86,28 +94,48 @@ body {
     font-weight: 700;
     color: orange;
     text-decoration: none;
-    margin-right: 1000px;
+    /* margin-right: 1000px; УБИРАЕМ ЭТО! Это ломает flexbox */
+    /* padding: 0 0 0 15px; Убираем */
+    margin: 0; /* Сбрасываем стандартный отступ */
+}
+
+.main-nav {
+    /* flex-grow: 1; /* Опционально: если нужно, чтобы nav занимал оставшееся место */
 }
 
 .nav-list {
     display: flex;
-    list-style: none;
-    gap: 30px;
+    list-style: none; /* Убираем маркеры списка */
+    gap: 30px; /* Отступ между пунктами меню */
+    margin: 0; /* Сбрасываем стандартные отступы списка */
+    padding: 0; /* Сбрасываем стандартные отступы списка */
 }
 
 .nav-list a {
     text-decoration: none;
-    color: white;
-    font-weight: 600;
-    transition: color 0.3s ease;
-    padding: 10px 15px;
-    border-radius: 25px;
+    color: white; /* Цвет текста ссылки */
+    font-weight: 600; /* Толщина шрифта */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Плавные переходы */
+    padding: 10px 15px; /* Внутренний отступ для удобства клика */
+    border-radius: 25px; /* Скругление уголов */
+    display: flex; /* Делаем ссылку flex-контейнером для иконки и текста */
+    align-items: center; /* Выравнивание иконки и текста по вертикали */
+    min-height: 40px; /* Пример минимальной высоты */
 }
 
 .nav-list a:hover {
-    color: orange;
-    background: rgba(102, 126, 234, 0.1);
+    color: orange; /* Цвет текста при наведении */
+    background-color: rgba(255, 165, 0, 0.2); /* Полупрозрачный оранжевый фон при наведении */
 }
+
+/* Стили для иконок (если используете Font Awesome или подобное) */
+.nav-list a i {
+    margin-right: 8px; /* Отступ между иконкой и текстом */
+    color: inherit; /* Иконка наследует цвет текста ссылки */
+    flex-shrink: 0; /* Иконка не будет сжиматься */
+    font-size: 16px; /* Укажем размер иконки */
+}
+
 
 /* Hero Section */
 .hero {

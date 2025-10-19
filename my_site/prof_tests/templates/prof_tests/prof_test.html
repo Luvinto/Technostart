@@ -3,118 +3,130 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Тест профориентации</title>
+    <title>Техностарт-Профориентационный тест</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 600px;
-            width: 100%;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            padding: 30px;
-            box-sizing: border-box;
-        }
-        .question {
-            display: none; /* Все вопросы скрыты по умолчанию */
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.5s ease forwards;
-        }
-        .question.active {
-            display: block; /* Активный вопрос отображается */
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .question p {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: #333;
-        }
-        .option {
-            display: block;
-            margin: 10px 0;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.2s, border-color 0.2s;
-        }
-        .option:hover {
-            background-color: #f5f7fa;
-            border-color: #007bff;
-        }
-        .option input[type="radio"] {
-            margin-right: 10px;
-        }
-        .navigation {
-            margin-top: 20px;
-            text-align: center;
-        }
-        button {
-            padding: 12px 24px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.2s;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        button:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
-        }
-        .progress-container {
-            margin-bottom: 20px;
-        }
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background-color: #e0e0e0;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        .progress-bar-fill {
-            height: 100%;
-            background-color: #007bff;
-            width: 0%;
-            transition: width 0.4s ease;
-        }
-        .results {
-            display: none;
-            text-align: center;
-        }
-        .results h2 {
-            color: #333;
-        }
-        .results ol {
-            text-align: left;
-            font-size: 18px;
-        }
-        .results li {
-            margin: 10px 0;
-        }
+    margin: 0;
+    padding: 0;
+    background-image: url('{% static "prof_tests/img/image_test.jpeg" %}');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.container {
+    max-width: 600px;
+    width: 100%;
+    background-color: white; /* Белый фон для карточки */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 30px;
+    box-sizing: border-box;
+    /* Позиционирование не нужно, так как центрирование через body */
+}
+.question {
+    display: none; /* Все вопросы скрыты по умолчанию */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+.question.active {
+    display: block; /* Активный вопрос отображается */
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.question p {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+.option {
+    display: block;
+    margin: 10px 0;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+.option:hover {
+    background-color: #f5f7fa;
+    border-color: #fd7e14; /* Оранжевый при наведении */
+}
+.option input[type="radio"] {
+    margin-right: 10px;
+}
+.navigation {
+    margin-top: 20px;
+    text-align: center;
+}
+button {
+    padding: 20px 40px;
+    background-color: orange; /* Оранжевый основной цвет кнопки */
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.2s;
+    margin: 0 5px; /* Небольшой отступ между кнопками */
+}
+button:hover {
+    background-color: #e66100; /* Темнее оранжевый при наведении */
+}
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+/* Стили для кнопки "На главную" */
+.btn-home {
+    background-color: blue;
+}
+.btn-home:hover {
+    background-color: #e66100;
+.progress-container {
+    margin-bottom: 20px;
+}
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.progress-bar-fill {
+    height: 100%;
+    background-color: #fd7e14; /* Оранжевый цвет прогресс-бара */
+    width: 0%;
+    transition: width 0.4s ease;
+}
+.results {
+    display: none;
+    text-align: center;
+}
+.results h2 {
+    color: #333;
+}
+.results ol {
+    text-align: left;
+    font-size: 18px;
+}
+.results li {
+    margin: 10px 0;
+}
     </style>
 </head>
 <body>
@@ -126,8 +138,7 @@
             </div>
         </div>
         <form id="career-test-form">
-            <!-- Вопросы будут вставлены сюда JavaScript-ом -->
-            <!-- Пример одного вопроса (их будет 14) -->
+            <!-- Ваши вопросы (q1 до q14) -->
             <div class="question" id="q1">
                 <p>1. Какая из этих тем тебе кажется самой интересной?</p>
                 <label class="option"><input type="radio" name="q1" value="a"> a) Как сохранить природу и сделать воздух чище</label><br>
@@ -277,7 +288,7 @@
                 <label class="option"><input type="radio" name="q12" value="b"> b) Интересно разбираться в сложных технических процессах</label><br>
                 <label class="option"><input type="radio" name="q12" value="c"> c) Люблю задачи, связанные с приключениями и техникой</label><br>
                 <label class="option"><input type="radio" name="q12" value="d"> d) Хочу разобраться в сложной энергосистеме</label><br>
-                <label class="option"><input type="radio" name="q12" value="e"> e) Люлю "починить" что-то сломанное</label><br>
+                <label class="option"><input type="radio" name="q12" value="e"> e) Люблю "починить" что-то сломанное</label><br>
                 <label class="option"><input type="radio" name="q12" value="f"> f) Люблю придумывать и создавать новое</label><br>
                 <label class="option"><input type="radio" name="q12" value="g"> g) Интересно планировать и проектировать</label><br>
                 <label class="option"><input type="radio" name="q12" value="h"> h) Люблю программировать и автоматизировать</label><br>
@@ -311,15 +322,18 @@
             </div>
 
             <div class="navigation">
+                <!-- Кнопка "Следующий" / "Получить результаты" -->
                 <button type="button" id="next-btn" disabled>Следующий вопрос</button>
-                <!-- Кнопка "Получить результаты" будет отображаться на последнем вопросе -->
             </div>
         </form>
 
         <div id="results" class="results">
             <h2>Ваши результаты:</h2>
-            <p>Вот топ-3 профессии, которые могут вам подойти:</p>
+            <p>Вот 3 профессии, которые могут вам подойти и которые вы можете изучить у нас на сайте:</p>
+
             <ol id="top3-list"></ol>
+            <!-- Кнопка "На главную" также отображается после результатов -->
+            <a href="{% url 'home' %}"><button type="button" class="btn-home">На главную</button></a>
         </div>
     </div>
 
