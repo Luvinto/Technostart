@@ -13,7 +13,7 @@ def register(request):
             user.set_password(form.cleaned_data['password'])
             user.save()
             group = Group.objects.get(name='Обычные пользователи')
-            user.groups.add(group)
+            user.group.add(group)
             login(request, user)  # Автоматически залогинить пользователя
             return redirect('choice')  # Измените на нужный вам URL
     else:

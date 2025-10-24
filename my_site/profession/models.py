@@ -22,7 +22,7 @@ class Profession(models.Model):
 class Presentations(models.Model):
     title=models.CharField(max_length=200)
     file=models.FileField(upload_to='presentations/', verbose_name="Файл")
-    file_met=models.FileField(upload_to='presentations/', verbose_name="Файл по методическим пособиям", blank=True, null=True)
+    file_met=models.FileField(upload_to='presentations/', verbose_name="Файл по методическим пособиям", blank=True)
 
     class Meta:
         verbose_name = "Презентиция"

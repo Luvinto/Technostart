@@ -20,19 +20,10 @@
                     <div class="profession-card-stage-right">
                         <img src="{{ prof.img_static.url }}" alt="{{ prof.title }}">
                         <h3>{{ prof.title }}</h3>
-                        <button class="btn btn-learn-stage-right" data-profession="{{ prof.title }}">Изучить</button>
+                        <a href="{{ prof.get_absolute_url }}"><button class="btn btn-learn-stage-right" data-profession="{{ prof.title }}">Изучить</button></a>
                     </div>
                 {% endif %}
             {% endfor %}
         </div>
     </div>
-
-    <script>
-        document.querySelectorAll('.btn-learn-stage-right').forEach(button => {
-            button.addEventListener('click', function() {
-                const profession = this.getAttribute('data-profession');
-                alert(`Вы выбрали: ${profession}\nЗдесь может быть подробное описание профессии.`);
-            });
-        });
-    </script>
 {% endblock %}

@@ -42,7 +42,7 @@ def presintations_list(req):
     return render(req, 'profession/presintations_list.html', {'presintations':presintations})
 
 @login_required
-def download_presentation(request, pk):
+def download_presentation_file(request, pk):
     try:
         pres = Presentations.objects.get(pk=pk)
         file_path = pres.file.path
@@ -50,6 +50,21 @@ def download_presentation(request, pk):
             with open(file_path, 'rb') as fh:
                 response = HttpResponse(fh.read(), content_type="application/vnd.openxmlformats-officedocument.presentationml.presentation")
                 response['Content-Disposition'] = f'attachment; filename="{pres.file.name.split("/")[-1]}"'
+                return response
+        else:
+            raise Http404("Файл не найден")
+    except Presentations.DoesNotExist:
+        raise Http404("Презентация не найдена")
+
+@login_required
+def download_presentation_file_met(request, pk):
+    try:
+        pres = Presentations.objects.get(pk=pk)
+        file_path = pres.file_met.path
+        if os.path.exists(file_path):
+            with open(file_path, 'rb') as fh:
+                response = HttpResponse(fh.read(), content_type="application/vnd.openxmlformats-officedocument.presentationml.presentation")
+                response['Content-Disposition'] = f'attachment; filename="{pres.file_met.name.split("/")[-1]}"'
                 return response
         else:
             raise Http404("Файл не найден")

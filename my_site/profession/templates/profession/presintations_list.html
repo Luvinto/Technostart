@@ -14,7 +14,7 @@
                 {% for pres in presintations%}
                     <div class="header-row">
                         <h2>{{pres.title}}</h2>
-                        <a href="{% url 'download_presentation' pres.pk %}" >Скачать</a>
+                        <a href="{% url 'download_presentation_file' pres.pk %}">Презентация</a>/<a href="{% url 'download_presentation_file_met' pres.pk %}">Методичка</a>
                     </div>
                 {% endfor %}
         </div>
