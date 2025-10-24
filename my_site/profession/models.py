@@ -4,10 +4,10 @@ from django.urls import reverse
 
 class Profession(models.Model):
     title=models.CharField(max_length=200,verbose_name='название')
-    url_content=models.CharField(max_length=200, verbose_name="ссылка",blank=True, null=True)
+    url_content=models.CharField(max_length=200, verbose_name="ссылка на видео",blank=True, null=True)
     img_static=models.ImageField(upload_to='professions/', blank=True, null=True)
     slug=models.SlugField(max_length=200, db_index=True, unique=True)
-
+    dp_index_prof = models.CharField(max_length=100, blank=True, null=True, verbose_name='доп индекс для этапа')
 
     class Meta:
         verbose_name = "Професcия"
@@ -22,6 +22,7 @@ class Profession(models.Model):
 class Presentations(models.Model):
     title=models.CharField(max_length=200)
     file=models.FileField(upload_to='presentations/', verbose_name="Файл")
+    file_met=models.FileField(upload_to='presentations/', verbose_name="Файл по методическим пособиям", blank=True, null=True)
 
     class Meta:
         verbose_name = "Презентиция"
@@ -32,10 +33,11 @@ class Presentations(models.Model):
 
 class EngineeringProcessesAtaps(models.Model):
     title_ataps=models.CharField(max_length=200)
-    dp_index=models.CharField(max_length=100, blank=True, null=True)
+    dp_index=models.CharField(max_length=100, blank=True, null=True,  verbose_name='доп индекс для процесса')
     opisanie=models.TextField()
     img=models.ImageField(upload_to='engineering_processes/', blank=True, null=True)
     slug=models.SlugField(max_length=200, db_index=True, unique=True)
+    dp_index_prof = models.CharField(max_length=100, blank=True, null=True, verbose_name='доп индекс для профессии')
 
     class Meta:
         verbose_name = "Инженерный_этап"

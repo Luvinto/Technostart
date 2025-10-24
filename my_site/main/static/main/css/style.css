@@ -884,3 +884,267 @@ body {
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
 
+/* === Стили для страницы описания этапа (профессии слева, описание справа) === */
+
+/* Контейнер для всей страницы */
+.stage-description-page-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    min-height: calc(100vh - 80px); /* Учитываем высоту фиксированного header */
+    padding-top: 100px; /* Отступ сверху */
+    box-sizing: border-box;
+}
+
+/* Контейнер для карточек профессий (слева) */
+.professions-container-stage {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 350px; /* Фиксированная ширина */
+    /* height: 100%; /* Опционально: растянуть по высоте */
+}
+
+/* Карточка профессии */
+.profession-card-stage {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 20px; /* Уменьшенный отступ */
+    width: 100%;
+    min-height: 200px; /* Уменьшенная минимальная высота */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Элементы прижаты к верху */
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+}
+
+.profession-card-stage:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    border-color: #667eea;
+}
+
+/* Изображение в карточке профессии */
+.profession-card-stage img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+/* Название профессии */
+.profession-card-stage h3 {
+    margin: 0 0 15px;
+    color: #333;
+    text-align: center;
+    font-size: 1.2rem; /* Уменьшенный размер шрифта */
+    flex-grow: 1; /* Занимает оставшееся место */
+    display: flex;
+    align-items: center; /* Центрируем по вертикали */
+    justify-content: center;
+}
+
+/* Кнопка "Изучить" в карточке профессии */
+.profession-card-stage .btn-learn-stage {
+    align-self: center; /* Центрируем кнопку по горизонтали */
+    width: 100%;
+    max-width: 150px; /* Ограничиваем ширину кнопки */
+    padding: 10px 15px; /* Уменьшенные отступы */
+    font-size: 1rem; /* Уменьшенный размер шрифта */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Контейнер для карточки описания этапа (справа) */
+.stage-description-card-container {
+    flex-grow: 1; /* Занимает оставшееся место */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Элементы прижаты к верху */
+}
+
+/* Карточка описания этапа */
+.stage-description-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    width: 800px; /* Фиксированная ширина */
+    min-height: 600px; /* Минимальная высота */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+.stage-description-card:hover {
+    border-color: #667eea;
+}
+
+.stage-description-card h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.stage-description-card p {
+    color: #555;
+    line-height: 1.6;
+    flex-grow: 1; /* Растягивает параграф на оставшееся место */
+}
+
+/* === Responsive === */
+@media (max-width: 1200px) {
+    .stage-description-page-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .professions-container-stage {
+        width: 100%;
+        max-width: 400px; /* Ограничиваем ширину на мобильных */
+        margin-bottom: 20px;
+    }
+
+    .stage-description-card {
+        width: 100%;
+        max-width: 800px; /* Ограничиваем ширину */
+    }
+}
+
+/* === Стили для страницы описания этапа (процесс слева, профессии справа) === */
+
+/* Контейнер для всей страницы */
+.process-profession-page-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    min-height: calc(100vh - 80px); /* Учитываем высоту фиксированного header */
+    padding-top: 100px; /* Отступ сверху */
+    box-sizing: border-box;
+}
+
+/* Контейнер для карточки процесса (слева) */
+.process-card-container {
+    display: flex;
+    justify-content: center; /* Центрируем карточку внутри */
+    align-items: flex-start; /* Прижимаем к верху */
+    width: 800px; /* Фиксированная ширина */
+    /* flex-shrink: 0; /* Опционально: не сжимать */
+}
+
+/* Карточка процесса */
+.process-card-stage {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%; /* Занимает ширину контейнера */
+    min-height: 600px; /* Минимальная высота */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+    display: flex;
+    flex-direction: column; /* Организуем элементы вертикально */
+}
+
+.process-card-stage:hover {
+    border-color: #667eea;
+}
+
+.process-card-stage h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.process-card-stage p {
+    color: #555;
+    line-height: 1.6;
+    flex-grow: 1; /* Растягивает параграф на оставшееся место */
+}
+
+/* Контейнер для карточек профессий (справа) */
+.professions-container-stage-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 350px; /* Фиксированная ширина */
+    /* height: 100%; /* Опционально: растянуть по высоте */
+}
+
+/* Карточка профессии */
+.profession-card-stage-right {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 20px; /* Уменьшенный отступ */
+    width: 100%;
+    min-height: 200px; /* Уменьшенная минимальная высота */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Элементы прижаты к верху */
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+}
+
+.profession-card-stage-right:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    border-color: #667eea;
+}
+
+/* Изображение в карточке профессии */
+.profession-card-stage-right img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+/* Название профессии */
+.profession-card-stage-right h3 {
+    margin: 0 0 15px;
+    color: #333;
+    text-align: center;
+    font-size: 1.2rem; /* Уменьшенный размер шрифта */
+    flex-grow: 1; /* Занимает оставшееся место */
+    display: flex;
+    align-items: center; /* Центрируем по вертикали */
+    justify-content: center;
+}
+
+/* Кнопка "Изучить" в карточке профессии */
+.profession-card-stage-right .btn-learn-stage-right {
+    align-self: center; /* Центрируем кнопку по горизонтали */
+    width: 100%;
+    max-width: 150px; /* Ограничиваем ширину кнопки */
+    padding: 10px 15px; /* Уменьшенные отступы */
+    font-size: 1rem; /* Уменьшенный размер шрифта */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* === Responsive === */
+@media (max-width: 1200px) {
+    .process-profession-page-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .process-card-container {
+        width: 100%;
+        max-width: 800px; /* Ограничиваем ширину */
+    }
+
+    .professions-container-stage-right {
+        width: 100%;
+        max-width: 400px; /* Ограничиваем ширину на мобильных */
+        margin-top: 20px; /* Отступ сверху */
+    }
+}

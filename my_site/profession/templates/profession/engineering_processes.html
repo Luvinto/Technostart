@@ -1,5 +1,38 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
-{% block title %}Техностарт-Описание этапа{% endblock %}
+{% block title %}Техностарт - Процесс и Профессии{% endblock %}
+
 {% block content %}
+    <div class="process-profession-page-container">
+        <!-- Левая часть: Карточка описания процесса -->
+        <div class="process-card-container">
+            <div class="process-card-stage">
+                <h1>{{ eng_a.title_ataps }}</h1>
+                <p>{{ eng_a.opisanie }}</p>
+            </div>
+        </div>
+
+        <!-- Правая колонка: Карточки профессий -->
+        <div class="professions-container-stage-right">
+            {% for prof in professions %}
+                {% if eng_a.dp_index_prof == prof.dp_index_prof %}
+                    <div class="profession-card-stage-right">
+                        <img src="{{ prof.img_static.url }}" alt="{{ prof.title }}">
+                        <h3>{{ prof.title }}</h3>
+                        <button class="btn btn-learn-stage-right" data-profession="{{ prof.title }}">Изучить</button>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.btn-learn-stage-right').forEach(button => {
+            button.addEventListener('click', function() {
+                const profession = this.getAttribute('data-profession');
+                alert(`Вы выбрали: ${profession}\nЗдесь может быть подробное описание профессии.`);
+            });
+        });
+    </script>
+{% endblock %}

@@ -23,13 +23,13 @@ def engineering_processes_index(req):
 
 @login_required
 def engineering_processes(req, post_slug):
-    eng_ataps=get_object_or_404(EngineeringProcessesAtaps, slug=post_slug)
-    return render(req, 'profession/engineering_processes.html', {'eng_ataps':eng_ataps} )
-
-@login_required
-def profession_index(req):
-    professions=Profession.objects.all()
-    return render(req, 'profession/profession_index.html', {'professions':professions})
+    professions = Profession.objects.all()
+    eng_a=get_object_or_404(EngineeringProcessesAtaps, slug=post_slug)
+    data={
+        'eng_a': eng_a,
+        'professions': professions
+    }
+    return render(req, 'profession/engineering_processes.html', data )
 
 @login_required
 def show_post(req,post_slug):
