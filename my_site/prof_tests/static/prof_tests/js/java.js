@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Словарь соответствия букв и профессий
     const careerMap = {
-        'a': 'Эколог-инженер',
+        'a': 'Инженер-эколог',
         'b': 'Металлург',
         'c': 'Горный инженер',
         'd': 'Энергетик',

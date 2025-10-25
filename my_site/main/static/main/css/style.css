@@ -77,16 +77,17 @@ body {
     /* Убираем max-width и margin: 0 auto, если они были, чтобы использовать всю ширину .container */
 }
 
-/* Обёртка для логотипа и названия */
 .logo-wrapper {
     display: flex;
     align-items: center; /* Выравнивание по вертикали */
     gap: 15px; /* Отступ между логотипом и названием */
     padding: 0 0 0 15px;
+    position: relative; /* Важно для позиционирования иконки */
 }
 
 .logo-img {
     height: 70px;
+    cursor: pointer; /* Показывает, что элемент кликабелен */
 }
 
 .logo-p {
@@ -94,13 +95,38 @@ body {
     font-weight: 700;
     color: orange;
     text-decoration: none;
-    /* margin-right: 1000px; УБИРАЕМ ЭТО! Это ломает flexbox */
-    /* padding: 0 0 0 15px; Убираем */
     margin: 0; /* Сбрасываем стандартный отступ */
 }
 
-.main-nav {
-    /* flex-grow: 1; /* Опционально: если нужно, чтобы nav занимал оставшееся место */
+.logo-text {
+    /* Размеры прямоугольной иконки */
+    width: 275px; /* Ширина */
+    height: 80px; /* Высота */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    font-size: 16px;
+    color: black;
+    margin: 0;
+
+    background-color: white;
+    border-radius: 25px; /* Прямоугольная форма */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+
+    position: absolute;
+    top: calc(100% + 10px); /* Расположение под всем .logo-wrapper */
+    left: 0; /* Выравнивание по левому краю .logo-wrapper */
+    z-index: 1000;
+
+    /* Скрытие по умолчанию */
+    display: none; /* Используем display: none в стилях */
+}
+
+/* Стиль для отображения */
+.show-logo-text {
+    display: flex !important;
 }
 
 .nav-list {
@@ -243,7 +269,7 @@ body {
 }
 
 .about-text p {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     margin-bottom: 20px;
     line-height: 1.8;
 }

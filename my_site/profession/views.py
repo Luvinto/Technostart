@@ -63,7 +63,7 @@ def download_presentation_file_met(request, pk):
         file_path = pres.file_met.path
         if os.path.exists(file_path):
             with open(file_path, 'rb') as fh:
-                response = HttpResponse(fh.read(), content_type="application/vnd.openxmlformats-officedocument.presentationml.presentation")
+                response = HttpResponse(fh.read(), content_type="application/pdf")
                 response['Content-Disposition'] = f'attachment; filename="{pres.file_met.name.split("/")[-1]}"'
                 return response
         else:
