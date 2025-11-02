@@ -1,191 +1,208 @@
-/* --- Стили для формы регистрации --- */
 
-/* Обертка для центрирования формы на странице */
 .container {
-    /* Уже определен, но добавим центрирование контекста */
-    /* margin: 0 auto; - уже есть */
-    /* padding: 0 20px; - уже есть */
-    /* width: 1200px; - исправьте на max-width, если нужно центрирование */
-    max-width: 2200px; /* Исправлено на max-width */
+    max-width: 2200px;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Высота экрана для центрирования по вертикали */
-    padding: 40px; /* Добавим отступы */
-    box-sizing: border-box; /* Учитываем padding в ширине */
+    min-height: 100vh;
+    padding: 40px;
+    box-sizing: border-box;
 }
 
-/* Основная обертка формы */
 .form-wrapper {
-    background: rgba(255, 255, 255, 0.95); /* Полупрозрачный белый фон */
-    border-radius: 20px; /* Скругление углов */
-    padding: 40px; /* Внутренние отступы */
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
     width: 100%;
-    max-width: 500px; /* Максимальная ширина формы */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* Тень */
-    backdrop-filter: blur(10px); /* Эффект размытия фона */
-    border: 2px solid rgba(102, 126, 234, 0.2); /* Легкая граница */
-    box-sizing: border-box; /* Учитываем padding в ширине */
+    max-width: 500px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    box-sizing: border-box;
 }
 
-/* Заголовок формы */
 .form-title {
-    text-align: center; /* Центрирование */
-    font-size: 2.5rem; /* Размер шрифта */
-    margin-bottom: 30px; /* Отступ снизу */
-    color: #333; /* Цвет текста */
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #333;
 }
 
-/* Стили для самой формы */
 .registration-form {
     display: flex;
-    flex-direction: column; /* Поля будут в столбик */
-    gap: 20px; /* Отступ между элементами */
+    flex-direction: column;
+    gap: 20px;
 }
 
-/* Группа для одного поля (label + input + error) */
 .form-group {
     display: flex;
-    flex-direction: column; /* Label над input */
-    gap: 8px; /* Отступ между label и input */
+    flex-direction: column;
+    gap: 8px;
 }
 
-/* Стили для label */
 .form-group label {
-    font-weight: 600; /* Жирный шрифт */
-    color: #333; /* Цвет текста */
-    font-size: 1.1rem; /* Размер шрифта */
+    font-weight: 600;
+    color: #333;
+    font-size: 1.1rem;
 }
 
-/* Стили для input, select, textarea */
 .form-group input,
 .form-group select,
 .form-group textarea {
-    padding: 15px; /* Внутренние отступы */
-    border: 2px solid #ccc; /* Граница */
-    border-radius: 10px; /* Скругление */
-    font-size: 1rem; /* Размер шрифта */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Плавный переход */
-    box-sizing: border-box; /* Учитываем padding в ширине */
-    background-color: #f9f9f9; /* Светлый фон поля */
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    width: 100%;
 }
 
-/* Фокус на поле ввода */
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-    outline: none; /* Убираем стандартный outline */
-    border-color: #667eea; /* Цвет границы при фокусе */
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2); /* Внутренняя тень при фокусе */
-    background-color: white; /* Белый фон при фокусе */
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    background-color: white;
 }
 
-/* Стили для сообщений об ошибках */
 .error-message {
-    color: #e74c3c; /* Красный цвет текста */
-    font-size: 0.9rem; /* Меньший размер шрифта */
-    margin-top: -5px; /* Немного поднимаем над следующим элементом */
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin-top: -5px;
 }
 
-/* --- Стили для кнопок --- */
 .btn {
     display: inline-block;
     padding: 15px 30px;
-    border-radius: 15px; /* Скругление углов кнопки */
+    border-radius: 15px;
     text-decoration: none;
     font-weight: 600;
     font-size: 1.5rem;
     text-align: center;
     transition: all 0.3s ease;
-    border: 2px solid transparent; /* Прозрачная граница по умолчанию */
+    border: 2px solid transparent;
     cursor: pointer;
     box-sizing: border-box;
-    min-width: 200px; /* Одинаковая минимальная ширина */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень для "строгости" */
+    min-width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    word-wrap: break-word;
+    white-space: normal;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
-/* Стили для основной кнопки (например, "Войти") */
 .btn-primary {
-    background-color: #667eea; /* Цвет фона */
-    color: white; /* Цвет текста */
-    border-color: #667eea; /* Цвет границы */
+    background-color: #667eea;
+    color: white;
+    border-color: #667eea;
 }
 
-/* Стили при наведении на основную кнопку */
 .btn-primary:hover,
 .btn-primary:focus {
-    background-color: #5a6fd8; /* Темнее фон */
-    border-color: #5a6fd8; /* Темнее граница */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Более выраженная тень */
-    transform: translateY(-2px); /* Легкий подъем */
+    background-color: #5a6fd8;
+    border-color: #5a6fd8;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
 }
 
-/* Стили для второстепенной кнопки (например, "Зарегистрироваться") */
 .btn-secondary {
-    background-color: #f0f0f0; /* Нейтральный фон */
-    color: #333; /* Темный текст */
-    border-color: #ccc; /* Граница */
+    background-color: #f0f0f0; 
+    color: #333;
+    border-color: #ccc;
+    width: auto;
+    margin: 0 auto;
 }
 
-/* Стили при наведении на второстепенную кнопку */
 .btn-secondary:hover,
 .btn-secondary:focus {
-    background-color: #e0e0e0; /* Светлее фон */
-    border-color: #bbb; /* Темнее граница */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Более выраженная тень */
-    transform: translateY(-2px); /* Легкий подъем */
+    background-color: #e0e0e0;
+    border-color: #bbb;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); 
+    transform: translateY(-2px);
 }
 
-/* Стили для footer-а формы (для кнопки "Зарегистрироваться") */
 .form-footer {
-    margin-top: 20px; /* Отступ сверху */
-    text-align: center; /* Центрирование содержимого */
+    margin-top: 20px; 
+    text-align: center;
 }
 
 .form-footer a {
-    text-decoration: none; /* Убираем подчеркивание у ссылки */
-    display: inline-block; /* Позволяет кнопке занимать всю ширину ссылки */
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
 }
 
-
-/* --- Адаптивность для формы --- */
 @media (max-width: 768px) {
     .form-wrapper {
-        padding: 30px 20px; /* Меньше отступов на мобильных */
-        max-width: 90%; /* Ширина ближе к 100% */
+        padding: 30px 20px;
+        max-width: 90%;
     }
 
     .form-title {
-        font-size: 2rem; /* Меньше заголовок */
+        font-size: 2rem;
     }
 
     .registration-form {
-        gap: 15px; /* Меньше отступов между полями */
+        gap: 15px;
     }
 
     .form-group input,
     .form-group select,
     .form-group textarea {
-        padding: 12px; /* Меньше отступов в полях */
+        padding: 12px;
     }
-
+    
+    .btn {
+        font-size: 1.3rem;
+    }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 10px; /* Меньше отступов контейнера */
+        padding: 10px;
     }
 
     .form-wrapper {
-        padding: 20px 15px; /* Еще меньше отступов */
-        max-width: 100%; /* Полная ширина */
+        padding: 20px 15px;
+        max-width: 100%;
     }
 
     .form-title {
-        font-size: 1.8rem; /* Еще меньше заголовок */
+        font-size: 1.8rem;
     }
 
     .registration-form {
-        gap: 12px; /* Еще меньше отступов */
+        gap: 12px; 
     }
+    
+    .btn {
+        font-size: 1.1rem;
+        min-width: 150px;
+        padding: 12px 20px;
+        min-height: 50px;
+    }
+}
 
+@media (max-width: 360px) {
+    .btn {
+        font-size: 0.9rem;
+        min-width: 120px;
+        padding: 10px 15px;
+        min-height: 45px;
+    }
+}
+
+@media (max-width: 320px) {
+    .btn {
+        font-size: 0.8rem;
+        min-width: 100px;
+        padding: 8px 12px;
+        min-height: 40px;
+    }
+}

@@ -14,8 +14,8 @@ def register(request):
             user.save()
             group = Group.objects.get(name='Обычные пользователи')
             user.group.add(group)
-            login(request, user)  # Автоматически залогинить пользователя
-            return redirect('choice')  # Измените на нужный вам URL
+            login(request, user)
+            return redirect('choice')
     else:
         form = RegistrationForm()
     return render(request, 'users/register.html', {'form': form})

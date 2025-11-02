@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Profession,Presentations, EngineeringProcessesAtaps, EngineeringProcessesTitle
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, FileResponse
 from django.conf import settings
 import os
 from django.contrib.auth.decorators import login_required
@@ -46,13 +46,16 @@ def download_presentation_file(request, pk):
     try:
         pres = Presentations.objects.get(pk=pk)
         file_path = pres.file.path
-        if os.path.exists(file_path):
-            with open(file_path, 'rb') as fh:
-                response = HttpResponse(fh.read(), content_type="application/vnd.openxmlformats-officedocument.presentationml.presentation")
-                response['Content-Disposition'] = f'attachment; filename="{pres.file.name.split("/")[-1]}"'
-                return response
-        else:
+        if not os.path.exists(file_path):
             raise Http404("Файл не найден")
+        response = FileResponse(
+            open(file_path, 'rb'),
+            content_type="application/vnd.openxmlformats-officedocument.presentationml.presentation",
+            as_attachment=True,
+            filename=pres.file.name.split("/")[-1]
+        )
+        return response
+
     except Presentations.DoesNotExist:
         raise Http404("Презентация не найдена")
 
@@ -61,12 +64,15 @@ def download_presentation_file_met(request, pk):
     try:
         pres = Presentations.objects.get(pk=pk)
         file_path = pres.file_met.path
-        if os.path.exists(file_path):
-            with open(file_path, 'rb') as fh:
-                response = HttpResponse(fh.read(), content_type="application/pdf")
-                response['Content-Disposition'] = f'attachment; filename="{pres.file_met.name.split("/")[-1]}"'
-                return response
-        else:
+        if not os.path.exists(file_path):
             raise Http404("Файл не найден")
+
+        response = FileResponse(
+            open(file_path, 'rb'),
+            content_type="application/pdf",
+            filename=pres.file_met.name.split("/")[-1]
+        )
+        return response
+
     except Presentations.DoesNotExist:
         raise Http404("Презентация не найдена")

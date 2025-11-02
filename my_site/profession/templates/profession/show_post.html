@@ -10,12 +10,141 @@
     </div>
     <div class="video-container">
         <div class="video-wrapper">
-            {% if post.url_content is not NULL %}
+            {% if post.url_content != '' %}
                 <iframe src="{{post.url_content}}" style="border-radius: 20px;" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
             {% else %}
                 <img src="{% static 'profession/img/not_video.jpg'%}" alt="">
             {% endif %}
         </div>
     </div>
+
+<!-- === Контейнер для всех карточек === -->
+    <div class="cards-container">
+        <!-- Карточка для определения -->
+        {% if post.termin %}
+        <div class="content-block">
+            <div class="card-content">
+                <h2 class="card-title">Определение</h2>
+                <p class="card-text">{{ post.termin }}</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Карточка для истории (фото и текст) -->
+        {% if post.img_history or post.tekst_history %}
+        <div class="content-block">
+            <div class="card-content">
+                <h2 class="card-title">История</h2>
+                {% if post.img_history %}
+                    <div class="card-image-container">
+                        <img src="{{ post.img_history.url }}" alt="Фото истории" class="card-image">
+                    </div>
+                {% endif %}
+                {% if post.tekst_history %}
+                    <p class="card-text">{{ post.tekst_history }}</p>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Карточка для функций -->
+        {% if post.img_functions %}
+        <div class="content-block">
+            <div class="card-content">
+                <div class="card-image-container">
+                    <img src="{{ post.img_functions.url }}" alt="Функции" class="card-image">
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Карточка для специализаций -->
+        {% if post.img_spec %}
+        <div class="content-block">
+            <div class="card-content">
+                <div class="card-image-container">
+                    <img src="{{ post.img_spec.url }}" alt="Специализации" class="card-image">
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Карточка для навыков -->
+        {% if post.img_skils %}
+        <div class="content-block">
+            <div class="card-content">
+                <div class="card-image-container">
+                    <img src="{{ post.img_skils.url }}" alt="Навыки" class="card-image">
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Карточка для востребованности -->
+        {% if post.tekst_vostreb %}
+        <div class="content-block">
+            <div class="card-content">
+                <h2 class="card-title">Востребованность</h2>
+                <p class="card-text">{{ post.tekst_vostreb }}</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Карточка для отраслей -->
+        {% if post.img_otrasl %}
+        <div class="content-block">
+            <div class="card-content">
+                <div class="card-image-container">
+                    <img src="{{ post.img_otrasl.url }}" alt="Отрасли" class="card-image">
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Карточка для образования -->
+        {% if post.tekst_learn %}
+        <div class="content-block">
+            <div class="card-content">
+                <h2 class="card-title">Образование</h2>
+                <p class="card-text">{{ post.tekst_learn }}</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Карточка для ребусов с возможностью отображения ответов -->
+        {% if post.img_rebus %}
+        <div class="content-block">
+            <div class="card-content">
+                <h2 class="card-title">Ребусы</h2>
+                <!-- Контейнер для изображения ребусов (всегда видим) -->
+                <div id="riddleImageContainer" class="riddle-image-container" style="display: block;">
+                    <img src="{{ post.img_rebus.url }}" alt="Ребусы" class="card-image">
+                </div>
+                {% if post.img_otvet %}
+                    <!-- Кнопка для переключения отображения ответов -->
+                    <button class="riddle-toggle-btn" onclick="toggleRiddleImage('riddleAnswerContainer')">
+                        Показать/Скрыть Ответы
+                    </button>
+                    <!-- Контейнер для изображения ответов (изначально скрыт) -->
+                    <div id="riddleAnswerContainer" class="riddle-image-container" style="display: none;">
+                        <img src="{{ post.img_otvet.url }}" alt="Ответы на ребусы" class="card-image">
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+    </div> <!-- Закрывающий тег для .cards-container -->
+
+    <!-- Добавляем скрипт для переключения отображения изображений ребусов -->
+    <script>
+        function toggleRiddleImage(containerId) {
+            const container = document.getElementById(containerId);
+            if (container.style.display === 'none') {
+                container.style.display = 'block';
+            } else {
+                container.style.display = 'none';
+            }
+        }
+    </script>
 
 {% endblock %}
