@@ -12,8 +12,6 @@ def register(request):
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
             user.save()
-            group = Group.objects.get(name='Обычные пользователи')
-            user.group.add(group)
             login(request, user)
             return redirect('choice')
     else:
