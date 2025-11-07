@@ -22,9 +22,8 @@
     backdrop-filter: blur(10px);
     border: 2px solid rgba(102, 126, 234, 0.2);
     box-sizing: border-box;
-    /* === Масштабирование формы === */
     transform-origin: top center;
-    transform: scale(clamp(0.7, 100vw / 580px, 1)); /* min: 0.7, ideal: 100vw/580px, max: 1 */
+    transform: scale(clamp(0.7, 100vw / 580px, 1));
 }
 
 .form-title {
@@ -32,7 +31,7 @@
     font-size: clamp(1.5rem, 2.5rem, 3rem);
     margin-bottom: clamp(20px, 30px, 40px);
     color: #333;
-    word-wrap: break-word; /* === Текст заголовка не выходит за границы === */
+    word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
@@ -46,7 +45,7 @@
     display: flex;
     flex-direction: column;
     gap: clamp(6px, 8px, 12px);
-    word-wrap: break-word; /* === Текст в группе не выходит за границы === */
+    word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
@@ -54,9 +53,9 @@
     font-weight: 600;
     color: #333;
     font-size: clamp(0.9rem, 1.1rem, 1.2rem);
-    word-wrap: break-word; /* === Текст в label не выходит за границы === */
+    word-wrap: break-word;
     overflow-wrap: break-word;
-    white-space: normal; /* === Убираем nowrap === */
+    white-space: normal;
 }
 
 .form-group input,
@@ -70,7 +69,7 @@
     box-sizing: border-box;
     background-color: #f9f9f9;
     width: 100%;
-    word-wrap: break-word; /* === Текст в полях не выходит за границы === */
+    word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
@@ -87,7 +86,7 @@
     color: #e74c3c;
     font-size: clamp(0.7rem, 0.9rem, 1rem);
     margin-top: -5px;
-    word-wrap: break-word; /* === Ошибки не вылезают за границы === */
+    word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
@@ -108,7 +107,7 @@
     min-width: clamp(150px, 200px, 250px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     word-wrap: break-word;
-    white-space: normal; /* === Текст кнопки может переноситься === */
+    white-space: normal;
     min-height: clamp(50px, 60px, 70px);
     display: flex;
     align-items: center;
@@ -140,7 +139,7 @@
     font-size: clamp(1rem, 1.2rem, 1.4rem);
     padding: clamp(8px, 12px, 16px) clamp(16px, 24px, 32px);
     word-wrap: break-word;
-    white-space: normal; /* === Текст кнопки может переноситься === */
+    white-space: normal;
 }
 
 .btn-secondary:hover,
@@ -219,18 +218,41 @@
 
 @media (max-width: 768px) {
     .container {
-        padding: 20px;
+        padding: 10px; /* Уменьшаем отступы */
+        min-height: 100vh;
+        align-items: flex-start; /* Выравнивание сверху */
     }
 
     .form-wrapper {
         padding: clamp(20px, 30px, 40px);
-        max-width: 90%;
+        max-width: 100%; /* Убираем ограничение по ширине */
+        width: 100vw; /* Занимает всю ширину экрана */
+        min-height: auto; /* Высота теперь подстраивается под содержимое */
+        height: auto; /* Добавлено для полной гибкости */
+        border-radius: 12px; /* Можно немного уменьшить скругление */
+        box-sizing: border-box;
+        transform: scale(1); /* Отключаем масштабирование */
+    }
+
+    .form-title {
+        font-size: clamp(1.4rem, 2rem, 2.2rem); /* Уменьшаем размер заголовка */
+        margin-bottom: clamp(15px, 20px, 25px);
+    }
+
+    .registration-form {
+        gap: clamp(12px, 18px, 25px); /* Уменьшаем отступы между полями */
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: clamp(10px, 12px, 15px); /* Уменьшаем внутренние отступы */
     }
 
     .checkbox-label {
         font-size: clamp(0.9rem, 1rem, 1.1rem);
         gap: clamp(0.2rem, 0.3rem, 0.4rem);
-        flex-wrap: wrap; /* === Если текст не помещается — переносим === */
+        flex-wrap: wrap;
     }
 
     .checkbox-label input[type="checkbox"] {
@@ -242,33 +264,65 @@
 
 @media (max-width: 480px) {
     .container {
-        padding: 10px;
+        padding: 5px;
     }
 
     .form-wrapper {
-        padding: clamp(15px, 20px, 30px);
+        padding: clamp(15px, 20px, 25px);
+        max-width: 100%;
+        width: 100vw;
+        min-height: auto; /* Высота подстраивается под содержимое */
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .form-title {
+        font-size: clamp(1.3rem, 1.6rem, 1.8rem);
+        margin-bottom: clamp(12px, 16px, 20px);
+    }
+
+    .btn {
+        padding: clamp(10px, 12px, 16px) clamp(16px, 20px, 24px);
+        font-size: clamp(1.1rem, 1.2rem, 1.4rem);
+        min-width: auto;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%; /* Кнопки занимают всю ширину */
         max-width: 100%;
     }
 
     .checkbox-label {
-        font-size: clamp(0.9rem, 0.9rem, 1rem);
+        font-size: clamp(0.9rem, 0.95rem, 1rem);
         gap: clamp(0.15rem, 0.2rem, 0.3rem);
     }
 
     .checkbox-label input[type="checkbox"] {
-        width: clamp(1.1rem, 1rem, 1.2rem);
-        height: clamp(1.1rem, 1rem, 1.2rem);
+        width: clamp(1rem, 1.1rem, 1.2rem);
+        height: clamp(1rem, 1.1rem, 1.2rem);
     }
 }
 
 @media (max-width: 360px) {
+    .form-wrapper {
+        padding: clamp(12px, 16px, 20px);
+        min-height: auto; /* Высота подстраивается под содержимое */
+        height: auto;
+    }
+
+    .form-title {
+        font-size: clamp(1.2rem, 1.4rem, 1.6rem);
+        margin-bottom: clamp(10px, 14px, 18px);
+    }
+
     .checkbox-label {
-        font-size: clamp(0.9rem, 0.9rem, 0.9rem);
+        font-size: clamp(0.85rem, 0.9rem, 0.95rem);
         gap: clamp(0.12rem, 0.15rem, 0.25rem);
     }
 
     .checkbox-label input[type="checkbox"] {
-        width: clamp(1.1rem, 1rem, 1rem);
-        height: clamp(1.1rem, 1rem, 1rem);
+        width: clamp(0.95rem, 1rem, 1.1rem);
+        height: clamp(0.95rem, 1rem, 1.1rem);
     }
 }
