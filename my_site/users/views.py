@@ -1,8 +1,12 @@
-from django.shortcuts import render, redirect
+
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import RegistrationForm, Avtorizations
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.models import User, Group
+from django.http import HttpResponse, Http404, FileResponse
+import os
+from django.conf import settings
 
 
 def register(request):
@@ -31,3 +35,15 @@ def custom_login(request):
             messages.error(request, 'Неверный логин или пароль')
 
     return render(request, 'users/login.html',)
+
+def download_consent_agreement(request):
+    file_path=os.path.join(settings.MEDIA_ROOT, 'agreements', 'Согласие на обработку персональных данных.docx')
+    if not os.path.exists(file_path):
+        raise Http404("Файл согласия не найден")
+    response=FileResponse(
+        open(file_path,'rb'),
+        content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        as_attachment=True,
+        filename='Согласие на обработку персональных данных.docx'
+    )
+    return response

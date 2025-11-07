@@ -26,9 +26,59 @@
                         {% endif %}
                     </div>
                 {% endfor %}
-                <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="terms-checkbox" required>
+                            <a href="/users/download-consent/" target="_blank">Согласие на обработку персональных данных</a>
+                    </label>
+                </div>
+
+                <!-- Кнопка регистрации (изначально скрыта) -->
+                <div id="register-btn-container">
+                    <button type="submit" class="btn btn-primary">
+                        Зарегистрироваться
+                    </button>
+                </div>
             </form>
         </div>
     </div>
+
+    <!-- JavaScript для отображения кнопки -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+                const checkbox = document.getElementById('terms-checkbox');
+                const buttonContainer = document.getElementById('register-btn-container');
+
+                // Проверка, что элементы существуют
+                if (!checkbox || !buttonContainer) {
+                    console.error('Элементы не найдены');
+                    return;
+                }
+
+                // Добавляем обработчик события
+                checkbox.addEventListener('change', function () {
+                    console.log('Чекбокс изменён:', this.checked); // Отладка
+                    if (this.checked) {
+                        buttonContainer.classList.add('btn-visible');
+                    } else {
+                        buttonContainer.classList.remove('btn-visible');
+                    }
+                });
+
+                // Дополнительно: проверяем при клике на label
+                const label = checkbox.closest('label');
+                if (label) {
+                    label.addEventListener('click', function (e) {
+                        // Убедимся, что клик не на ссылке
+                        if (e.target.tagName !== 'A') {
+                            setTimeout(() => {
+                                console.log('Состояние чекбокса после клика:', checkbox.checked);
+                            }, 10); // Небольшая задержка для обновления состояния
+                        }
+                    });
+                }
+            });
+    </script>
 </body>
 </html>
