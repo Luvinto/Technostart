@@ -17,7 +17,11 @@ def register(request):
             user.set_password(form.cleaned_data['password'])
             user.save()
             login(request, user)
-            return redirect('choice')
+            next_url = request.POST.get('next') or request.GET.get('next')
+            if next_url:
+                return redirect(next_url)
+            else:
+                return redirect('choice')
     else:
         form = RegistrationForm()
     return render(request, 'users/register.html', {'form': form})
@@ -30,11 +34,15 @@ def custom_login(request):
         user=authenticate(request, username=username, password=password)
         if user is not None:
             login(request,user)
-            return redirect('choice')
+            next_url = request.POST.get('next') or request.GET.get('next')
+            if next_url:
+                return redirect(next_url)
+            else:
+                return redirect('choice')
         else:
             messages.error(request, 'Неверный логин или пароль')
 
-    return render(request, 'users/login.html',)
+    return render(request, 'users/login.html')
 
 def download_consent_agreement(request):
     file_path=os.path.join(settings.MEDIA_ROOT, 'agreements', 'Согласие на обработку персональных данных.docx')

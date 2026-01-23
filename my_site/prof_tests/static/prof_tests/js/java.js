@@ -5,17 +5,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const top3List = document.getElementById('top3-list');
     const progressBarFill = document.getElementById('progress-bar');
 
-    // Словарь соответствия букв и профессий
+    // Словарь соответствия букв, профессий и ссылок
     const careerMap = {
-        'a': 'Инженер-эколог',
-        'b': 'Металлург',
-        'c': 'Горный инженер',
-        'd': 'Энергетик',
-        'e': 'Электротехник',
-        'f': 'Инженер-конструктор',
-        'g': 'Инженер-проектировщик',
-        'h': 'Инженер по автоматизации',
-        'i': 'Геодезист'
+        'a': { name: 'Инженер-эколог', link: 'http://127.0.0.1:8000/profession/post_professions/mining_engineer' },
+        'b': { name: 'Металлург', link: 'https://technostart25.ru/profession/post_professions/mining_engineer' },
+        'c': { name: 'Горный инженер', link: 'https://technostart25.ru/profession/post_professions/mining_engineer' },
+        'd': { name: 'Энергетик', link: 'https://technostart25.ru/profession/post_professions/mining_engineer' },
+        'e': { name: 'Электротехник', link: 'https://technostart25.ru/profession/post_professions/mining_engineer' },
+        'f': { name: 'Инженер-конструктор', link: 'https://technostart25.ru/profession/post_professions/mining_engineer' },
+        'g': { name: 'Инженер-проектировщик', link: 'https://technostart25.ru/profession/post_professions/mining_engineer' },
+        'h': { name: 'Инженер по автоматизации', link: 'https://technostart25.ru/profession/post_professions/mining_engineer' },
+        'i': { name: 'Геодезист', link: 'http://127.0.0.1:8000/profession/post_professions/mining_engineer' }
     };
 
     // Все вопросы
@@ -110,8 +110,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const sortedScores = Object.entries(score).sort((a, b) => b[1] - a[1]); // Сортировка по убыванию баллов
         const top3Letters = sortedScores.slice(0, 3).map(item => item[0]); // Берём первые 3 буквы
 
-        // Получение названий профессий
-        const top3Careers = top3Letters.map(letter => careerMap[letter]).filter(name => name); // Убираем undefined, если вдруг
+        // Получение названий и ссылок профессий
+        const top3Careers = top3Letters.map(letter => careerMap[letter]).filter(item => item); // Убираем undefined, если вдруг
 
         // Очищаем предыдущие результаты
         top3List.innerHTML = '';
@@ -119,7 +119,17 @@ document.addEventListener('DOMContentLoaded', function () {
         if (top3Careers.length > 0) {
             top3Careers.forEach(career => {
                 const li = document.createElement('li');
-                li.textContent = career;
+                // Создаём ссылку
+                const link = document.createElement('a');
+                link.href = career.link;
+                link.textContent = career.name; // Надпись профессии
+                link.target = '_blank'; // Открывать в новой вкладке (по желанию)
+                // Стили, чтобы ссылка выглядела как обычная ссылка
+                link.style.textDecoration = 'none';
+                link.style.color = '#667eea';
+
+                // Добавляем ссылку внутрь <li>
+                li.appendChild(link);
                 top3List.appendChild(li);
             });
         } else {

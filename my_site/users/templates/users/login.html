@@ -21,6 +21,7 @@
             {% endif %}
             <form method="post" class="registration-form">
                 {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
                 <div class="form-group">
                     <p>
                         <label>Логин:</label>
@@ -35,7 +36,7 @@
 
             </form>
             <div class="form-footer">
-                <a href="{% url 'users:register' %}"><button type="button" class="btn btn-secondary">Зарегистрироваться</button></a>
+                <a href="{% url 'register' %}?{{ request.GET.urlencode }}"><button type="button" class="btn btn-secondary">Зарегистрироваться</button></a>
             </div>
         </div>
     </div>
